@@ -23,41 +23,43 @@ if (!in_array($theme, TIPOS, true)) {
   <div class="orb b"></div>
   <div class="orb c"></div>
   
-  <div class="wrap">
-    <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+  <!-- La barra de navegación ahora está FUERA de .wrap para ocupar todo el ancho -->
+  <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 15px 30px; box-sizing: border-box;">
       
-      <!-- Logo a la izquierda -->
-      <a class="brand" href="index.php">
-    <img src="MEGAFEST.png" alt="MegaFest" style="height: 40px; width: auto; display: block;">
-</a>
+    <!-- Logo a la izquierda y más grande -->
+    <a class="brand" href="index.php">
+        <img src="MEGAFEST.png" alt="MegaFest" style="height: 52px; width: auto; display: block;">
+    </a>
 
-      <!-- Enlaces y usuario alineados a la derecha de forma horizontal -->
-      <div class="nav-links" style="display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; margin-left: auto;">
-        <a href="index.php">Portal</a>
-        <a href="index.php#crear">Crear celebración</a>
-        <a href="dashboard.php">Panel de control</a>
+    <!-- Enlaces y usuario alineados a la derecha de forma horizontal -->
+    <div class="nav-links" style="display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; margin-left: auto;">
+      <a href="index.php">Portal</a>
+      <a href="index.php#crear">Crear celebración</a>
+      <a href="dashboard.php">Panel de control</a>
 
-        <?php if (isset($_SESSION['user'])): ?>
-          <!-- Menú desplegable de cuenta -->
-          <div class="user-dropdown">
-            <button class="user-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <?= htmlspecialchars($_SESSION['nombre'] ?? 'Mi Cuenta', ENT_QUOTES, 'UTF-8') ?>
-            </button>
-            <div class="dropdown-content">
-              <div class="dropdown-header">
-                <strong><?= htmlspecialchars($_SESSION['nombre'] ?? '', ENT_QUOTES, 'UTF-8') ?></strong>
-                <small><?= htmlspecialchars($_SESSION['user'] ?? '', ENT_QUOTES, 'UTF-8') ?></small>
-                <span class="badge-rol"><?= strtoupper(htmlspecialchars($_SESSION['rol'] ?? 'cliente', ENT_QUOTES, 'UTF-8')) ?></span>
-              </div>
-              <a href="dashboard.php">Sala de control</a>
-              <a href="logout.php" class="logout-link">Cerrar sesión</a>
+      <?php if (isset($_SESSION['user'])): ?>
+        <!-- Menú desplegable de cuenta -->
+        <div class="user-dropdown">
+          <button class="user-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <?= htmlspecialchars($_SESSION['nombre'] ?? 'Mi Cuenta', ENT_QUOTES, 'UTF-8') ?>
+          </button>
+          <div class="dropdown-content">
+            <div class="dropdown-header">
+              <strong><?= htmlspecialchars($_SESSION['nombre'] ?? '', ENT_QUOTES, 'UTF-8') ?></strong>
+              <small><?= htmlspecialchars($_SESSION['user'] ?? '', ENT_QUOTES, 'UTF-8') ?></small>
+              <span class="badge-rol"><?= strtoupper(htmlspecialchars($_SESSION['rol'] ?? 'cliente', ENT_QUOTES, 'UTF-8')) ?></span>
             </div>
+            <a href="dashboard.php">Sala de control</a>
+            <a href="logout.php" class="logout-link">Cerrar sesión</a>
           </div>
-        <?php else: ?>
-          <a href="login.php" class="btn primary" style="padding: 10px 18px;">Acceso / Registro</a>
-        <?php endif; ?>
+        </div>
+      <?php else: ?>
+        <a href="login.php" class="btn primary" style="padding: 10px 18px;">Acceso / Registro</a>
+      <?php endif; ?>
 
-      </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+
+  <!-- El contenido principal de la página continúa dentro de .wrap -->
+  <div class="wrap">
