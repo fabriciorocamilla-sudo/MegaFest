@@ -23,13 +23,13 @@ if (!in_array($theme, TIPOS, true)) {
   <div class="orb b"></div>
   <div class="orb c"></div>
   
-  <!-- Forzamos ancho total del 100% y eliminamos cualquier margen central -->
+  <!-- Barra de navegación con márgenes precisos para alinear el logo sobre "ESCENA VIVA" -->
   <div style="width: 100%; background: transparent; position: relative; z-index: 100;">
-    <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 15px 40px !important; box-sizing: border-box;">
+    <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 15px 60px !important; box-sizing: border-box;">
         
-      <!-- Logo bien a la izquierda y tamaño grande -->
-      <a class="brand" href="index.php" style="display: flex; align-items: center; text-decoration: none; margin-left: 0 !important;">
-          <img src="MEGAFEST.png" alt="MegaFest" style="height: 65px; width: auto; display: block;">
+      <!-- Logo alineado exactamente encima de "ESCENA VIVA" y con tamaño grande -->
+      <a class="brand" href="index.php" style="display: flex; align-items: center; text-decoration: none; margin-left: 35px !important;">
+          <img src="MEGAFEST.png" alt="MegaFest" style="height: 60px; width: auto; display: block;">
       </a>
 
       <!-- Enlaces y usuario alineados a la derecha -->
