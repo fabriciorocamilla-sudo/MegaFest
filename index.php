@@ -56,6 +56,9 @@ require __DIR__ . '/includes/header.php';
       <p class="meta">
         <span><?= e($item['fecha'] ?? '') ?> <?= e($item['hora'] ?? '') ?></span>
         <span><?= e($item['lugar'] ?? '') ?></span>
+        <?php if (!empty($item['costo_total'])): ?>
+          <span style="color: var(--accent-3);">Presupuesto: $<?= number_format((float)$item['costo_total'], 2) ?></span>
+        <?php endif; ?>
       </p>
     </article>
   <?php endforeach; ?>
@@ -107,6 +110,17 @@ require __DIR__ . '/includes/header.php';
         <option value="alta">Alta · explosivo</option>
       </select>
     </label>
+    
+    <!-- Nuevos campos para cotización -->
+    <label>
+      Costo base estimado ($)
+      <input type="number" name="precio_base" min="0" step="1" placeholder="Ej. 150">
+    </label>
+    <label>
+      Horas estimadas de servicio
+      <input type="number" name="horas" min="1" max="24" placeholder="Ej. 4">
+    </label>
+
     <label data-show="deporte">
       Disciplina
       <input type="text" name="deporte" placeholder="Fútbol 7, 3x3, atletismo...">
