@@ -1,5 +1,17 @@
 <?php
+
 declare(strict_types=1);
+require_once __DIR__ . '/includes/bootstrap.php';
+<?php
+declare(strict_types=1);
+session_start();
+
+// Si el usuario no ha iniciado sesión, redirigir al login limpio
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
+
 require_once __DIR__ . '/includes/bootstrap.php';
 
 $title = 'MegaFest · Panel de control';
