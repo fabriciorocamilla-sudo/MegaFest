@@ -25,8 +25,7 @@ if (!in_array($theme, TIPOS, true)) {
   <div class="wrap">
     <nav class="top">
       <a class="brand" href="index.php">
-        <span class="logo">★</span>
-        MegaFest
+        <img src="MEGAFEST.png" alt="MegaFest" style="height: 40px; vertical-align: middle;">
       </a>
       <div class="nav-links">
         <a href="index.php">Portal</a>
