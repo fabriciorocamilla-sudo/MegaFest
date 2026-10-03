@@ -28,8 +28,8 @@ if (!in_array($theme, TIPOS, true)) {
       
       <!-- Logo a la izquierda -->
       <a class="brand" href="index.php">
-        <img src="MEGAFEST.png" alt="MegaFest" style="height: 40px; width: auto; display: block;">
-      </a>
+    <img src="MEGAFEST.png" alt="MegaFest" style="height: 40px; width: auto; display: block;">
+</a>
 
       <!-- Enlaces y usuario alineados a la derecha de forma horizontal -->
       <div class="nav-links" style="display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; margin-left: auto;">
