@@ -25,9 +25,9 @@ if (!in_array($theme, TIPOS, true)) {
   <div class="wrap">
     <nav class="top">
       <a class="brand" href="index.php">
-       <img src="/MEGAFEST.png" alt="MegaFest" style="width: 180px; height: auto; vertical-align: middle;">
+        <img src="MEGAFEST.png" alt="MegaFest" style="height: 38px; width: auto; vertical-align: middle;">
       </a>
-      <div class="nav-links">
+      <div class="nav-links" style="display: flex; align-items: center; flex-wrap: nowrap;">
         <a href="index.php">Portal</a>
         <a href="index.php#crear">Crear celebración</a>
         <a href="dashboard.php">Panel de control</a>
@@ -54,3 +54,4 @@ if (!in_array($theme, TIPOS, true)) {
           <a href="login.php" class="btn-login" style="margin-left: 15px; color: #ff4fd8; border: 1px solid rgba(255, 79, 216, 0.4); padding: 6px 14px; border-radius: 8px;">Acceso / Registro</a>
         <?php endif; ?>
       </div>
+    </nav>
