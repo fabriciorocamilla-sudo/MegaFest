@@ -22,22 +22,26 @@ if (!in_array($theme, TIPOS, true)) {
   <div class="orb a"></div>
   <div class="orb b"></div>
   <div class="orb c"></div>
+  
   <div class="wrap">
-    <nav class="top">
+    <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      
+      <!-- Logo a la izquierda -->
       <a class="brand" href="index.php">
-        <img src="MEGAFEST.png" alt="MegaFest" style="height: 38px; width: auto; vertical-align: middle;">
+        <img src="MEGAFEST.png" alt="MegaFest" style="height: 40px; width: auto; display: block;">
       </a>
-      <div class="nav-links" style="display: flex; align-items: center; flex-wrap: nowrap;">
+
+      <!-- Enlaces y usuario alineados a la derecha de forma horizontal -->
+      <div class="nav-links" style="display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; margin-left: auto;">
         <a href="index.php">Portal</a>
         <a href="index.php#crear">Crear celebración</a>
         <a href="dashboard.php">Panel de control</a>
 
         <?php if (isset($_SESSION['user'])): ?>
-          <!-- Contenedor del menú desplegable de la cuenta -->
+          <!-- Menú desplegable de cuenta -->
           <div class="user-dropdown">
             <button class="user-btn">
-              <!-- Ícono SVG de usuario -->
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <?= htmlspecialchars($_SESSION['nombre'] ?? 'Mi Cuenta', ENT_QUOTES, 'UTF-8') ?>
             </button>
             <div class="dropdown-content">
@@ -51,7 +55,9 @@ if (!in_array($theme, TIPOS, true)) {
             </div>
           </div>
         <?php else: ?>
-          <a href="login.php" class="btn-login" style="margin-left: 15px; color: #ff4fd8; border: 1px solid rgba(255, 79, 216, 0.4); padding: 6px 14px; border-radius: 8px;">Acceso / Registro</a>
+          <a href="login.php" class="btn primary" style="padding: 10px 18px;">Acceso / Registro</a>
         <?php endif; ?>
+
       </div>
     </nav>
+  </div>
