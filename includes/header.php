@@ -31,6 +31,7 @@ if (!in_array($theme, TIPOS, true)) {
         <a href="index.php">Portal</a>
         <a href="index.php#crear">Crear celebración</a>
         <a href="dashboard.php">Panel de control</a>
+        <a href="login.php" class="btn-login" style="margin-left: 15px; color: #ff4fd8; border: 1px solid rgba(255, 79, 216, 0.4); padding: 6px 14px; border-radius: 8px;">Acceso / Registro</a>
       </div>
     </nav>
     <?php if ($flash): ?>
