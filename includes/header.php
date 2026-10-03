@@ -28,7 +28,7 @@ if (!in_array($theme, TIPOS, true)) {
     <nav class="top" style="display: flex; align-items: center; justify-content: space-between; width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 15px 60px !important; box-sizing: border-box;">
         
       <!-- Logo alineado exactamente encima de "ESCENA VIVA" y con tamaño grande -->
-      <a class="brand" href="index.php" style="display: flex; align-items: center; text-decoration: none; margin-left: 35px !important;">
+     <a class="brand" href="index.php" style="display: flex; align-items: center; text-decoration: none; margin-left: 150px !important;">
           <img src="MEGAFEST.png" alt="MegaFest" style="height: 60px; width: auto; display: block;">
       </a>
 
