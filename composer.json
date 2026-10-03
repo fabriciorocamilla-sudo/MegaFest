@@ -1,0 +1,8 @@
+{
+  "name": "megafest/portal",
+  "description": "Portal web interactivo de eventos, deportes, aniversarios y días festivos.",
+  "type": "project",
+  "require": {
+    "php": ">=8.1"
+  }
+}
