@@ -47,6 +47,12 @@ $descripcion = trim((string) ($_POST['descripcion'] ?? ''));
 $color = trim((string) ($_POST['color'] ?? '#ff4fd8'));
 $intensidad = trim((string) ($_POST['intensidad'] ?? 'media'));
 
+// Captura y validación de los campos de cotización
+$precio_base = max(0, (float) ($_POST['precio_base'] ?? 0));
+$horas_serv = max(1, (int) ($_POST['horas'] ?? 1));
+// Cálculo automático del presupuesto total (ej. precio base por las horas estimadas)
+$costo_total = $precio_base * $horas_serv;
+
 $errores = [];
 if ($titulo === '' || strlen($titulo) > 90) {
     $errores[] = 'El título es obligatorio (máx. 90).';
@@ -90,6 +96,9 @@ $item = [
     'descripcion' => $descripcion,
     'color' => $color,
     'intensidad' => $intensidad,
+    'precio_base' => $precio_base,
+    'horas' => $horas_serv,
+    'costo_total' => $costo_total,
     'destacado' => isset($_POST['destacado']),
     'creado' => $existente['creado'] ?? date('Y-m-d H:i:s'),
     'actualizado' => date('Y-m-d H:i:s'),
