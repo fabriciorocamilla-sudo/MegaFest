@@ -30,7 +30,7 @@ if (!in_array($theme, TIPOS, true)) {
       <!-- Contenedor del logo con el margen exacto para ubicarlo sobre "ESCENA VIVA" -->
      <div style="margin-left: 320px !important;">
         <a class="brand" href="index.php" style="display: flex; align-items: center; text-decoration: none;">
-            <img src="MEGAFEST.png" alt="MegaFest" style="height: 60px; width: auto; display: block;">
+            <img src="MEGAFEST.png" alt="MegaFest" style="height: 400px; width: auto; display: block;">
         </a>
       </div>
 
