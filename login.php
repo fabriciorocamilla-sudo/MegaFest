@@ -5,6 +5,15 @@ session_start();
 $error = '';
 $exito = '';
 
+// ... (tu código actual de lectura/creación del archivo users.json y validación del formulario) ...
+
+// EJEMPLO DE CÓMO DEbe IR CUANDO EL LOGIN O REGISTRO ES EXITOSO:
+if ($acceso_concedido) { // (Reemplaza esto por tu propia condición de éxito)
+    $_SESSION['user'] = $correoIngresado; // Guardas el correo del usuario en la sesión
+    header('Location: dashboard.php');      // Lo mandas al panel de control
+    exit;
+}
+
 // Ruta al archivo de usuarios
 $archivoUsuarios = __DIR__ . '/data/users.json';
 if (!file_exists($archivoUsuarios)) {
