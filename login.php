@@ -28,11 +28,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rol = $_POST['rol'] ?? 'cliente';
         $admin_code = $_POST['admin_code'] ?? '';
 
-        if (empty($nombre) || empty($email) || empty($password)) {
-            $error = 'Por favor, completa todos los campos obligatorios.';
-        } elseif ($rol === 'admin' && $admin_code !== ADMIN_SECRET_KEY) {
-            $error = 'La contraseña maestra de administrador es incorrecta.';
+        // Validaciones condicionales según el rol seleccionado
+        if ($rol === 'admin') {
+            if (empty($nombre) || empty($email) || empty($admin_code)) {
+                $error = 'Por favor, completa todos los campos obligatorios.';
+            } elseif ($admin_code !== ADMIN_SECRET_KEY) {
+                $error = 'La contraseña maestra de administrador es incorrecta.';
+            } else {
+                $passwordParaGuardar = $admin_code;
+            }
         } else {
+            if (empty($nombre) || empty($email) || empty($password)) {
+                $error = 'Por favor, completa todos los campos obligatorios.';
+            } else {
+                $passwordParaGuardar = $password;
+            }
+        }
+
+        if (empty($error)) {
             $existe = false;
             foreach ($usuarios as $u) {
                 if ($u['email'] === $email) {
@@ -47,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $usuarios[] = [
                     'nombre' => $nombre,
                     'email' => $email,
-                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                    'password' => password_hash($passwordParaGuardar, PASSWORD_DEFAULT),
                     'rol' => $rol,
                     'fecha_registro' => date('Y-m-d H:i:s')
                 ];
@@ -91,7 +104,7 @@ $title = 'MegaFest · Acceso a Sala de Control';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Estilos y formulario interactivo con campos de Nombre y Rol -->
+<!-- Estilos y formulario interactivo con campos dinámicos -->
 <style>
 .auth-container { max-width: 440px; margin: 40px auto; background: rgba(26, 15, 35, 0.85); border: 1px solid rgba(255, 79, 216, 0.2); border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
 .auth-tabs { display: flex; gap: 10px; margin-bottom: 24px; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 10px; }
@@ -133,7 +146,6 @@ require __DIR__ . '/includes/header.php';
         <input type="hidden" name="accion" value="registro">
         <label>Nombre de usuario <input type="text" name="nombre" required placeholder="Tu Nombre"></label>
         <label>Correo electrónico <input type="email" name="email" required placeholder="nuevo@megafest.com"></label>
-        <label>Crea una contraseña <input type="password" name="password" required placeholder="••••••••"></label>
         
         <label>Tipo de cuenta 
             <select name="rol" id="rol-select" onchange="toggleAdminCode()">
@@ -142,8 +154,14 @@ require __DIR__ . '/includes/header.php';
             </select>
         </label>
 
+        <!-- Campo de contraseña para Clientes (cualquier contraseña) -->
+        <label id="campo-password-cliente">Crea una contraseña 
+            <input type="password" name="password" id="input-password" required placeholder="••••••••">
+        </label>
+        
+        <!-- Campo de contraseña para Administradores (clave maestra única) -->
         <label id="admin-code-wrap" style="display: none;">Contraseña Maestra de Admin
-            <input type="password" name="admin_code" placeholder="Clave secreta de administrador">
+            <input type="password" name="admin_code" id="input-admin-code" placeholder="Clave secreta de administrador">
         </label>
 
         <button type="submit" class="auth-btn">Crear Cuenta y Entrar</button>
@@ -162,10 +180,25 @@ function cambiarModo(tipo) {
         document.getElementById('form-registro').classList.add('active');
     }
 }
+
 function toggleAdminCode() {
     const rol = document.getElementById('rol-select').value;
-    const wrap = document.getElementById('admin-code-wrap');
-    wrap.style.display = (rol === 'admin') ? 'block' : 'none';
+    const wrapAdmin = document.getElementById('admin-code-wrap');
+    const wrapCliente = document.getElementById('campo-password-cliente');
+    const inputPassword = document.getElementById('input-password');
+    const inputAdminCode = document.getElementById('input-admin-code');
+
+    if (rol === 'admin') {
+        wrapAdmin.style.display = 'block';
+        wrapCliente.style.display = 'none';
+        inputAdminCode.required = true;
+        inputPassword.required = false;
+    } else {
+        wrapAdmin.style.display = 'none';
+        wrapCliente.style.display = 'block';
+        inputAdminCode.required = false;
+        inputPassword.required = true;
+    }
 }
 </script>
 
